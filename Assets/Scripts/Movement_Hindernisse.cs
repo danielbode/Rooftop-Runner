@@ -6,7 +6,7 @@ public class Movement_Hindernisse : MonoBehaviour {
 	//public float speed;
 	public Vector2 velocity;
 	public Rigidbody2D rb2D;
-	private GameControl gameControl;
+	private GameController gameControl;
 	public bool geschwVeraenderung;
 
 
@@ -25,7 +25,7 @@ public class Movement_Hindernisse : MonoBehaviour {
 		GameObject gameControllerObject = GameObject.FindWithTag ("GameController");
 		if (gameControllerObject != null)
 		{
-			gameControl = gameControllerObject.GetComponent <GameControl>();
+			gameControl = gameControllerObject.GetComponent <GameController>();
 		}
 		if (gameControl == null)
 		{
@@ -56,7 +56,7 @@ public class Movement_Hindernisse : MonoBehaviour {
 
 		if (geschwVeraenderung) 
 		{
-			g = gameControl.gameObject.GetComponent<Geschwindigkeitskontrolle> ().geschwindigkeit;
+			g = gameControl.gameObject.GetComponent<SpeedController> ().Acceleration;
 		}
 
 		if (gameControl.GetGameOn ()) {

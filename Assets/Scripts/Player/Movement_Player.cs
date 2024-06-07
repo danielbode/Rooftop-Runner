@@ -6,7 +6,7 @@ public class Movement_Player : MonoBehaviour {
 	public Rigidbody2D rb2D;
 	public Vector2 kraft;
 	private int zahl;
-	private GameControl gameControl;
+	private GameController gameControl;
 
 	private swipeEingabe swipe;
 	private int geduckt;
@@ -22,7 +22,7 @@ public class Movement_Player : MonoBehaviour {
 		GameObject gameControllerObject = GameObject.FindWithTag ("GameController");
 		if (gameControllerObject != null)
 		{
-			gameControl = gameControllerObject.GetComponent <GameControl>();
+			gameControl = gameControllerObject.GetComponent <GameController>();
 		}
 		if (gameControl == null)
 		{
@@ -175,7 +175,7 @@ public class Movement_Player : MonoBehaviour {
 		transform.position = new Vector3 (-6.5f, 1, 0);
 
 		rb2D.isKinematic = true;
-		gameControl.gameObject.GetComponent<Geschwindigkeitskontrolle> ().extraGeschw ();
+		gameControl.gameObject.GetComponent<SpeedController> ().extraGeschw ();
 		//rb2D.constraints = RigidbodyConstraints2D.FreezeAll;
 		//GetComponent<PolygonCollider2D> ().enabled = false;
 	}
@@ -185,7 +185,7 @@ public class Movement_Player : MonoBehaviour {
 		if (unsterblich == 300)
 		{
 			rb2D.isKinematic = false;
-			gameControl.gameObject.GetComponent<Geschwindigkeitskontrolle> ().extraGeschwEnde();
+			gameControl.gameObject.GetComponent<SpeedController> ().extraGeschwEnde();
 			//transform.position = new Vector3 (-6.5f, -3, 0);
 			/*rb2D.constraints = RigidbodyConstraints2D.None;
 

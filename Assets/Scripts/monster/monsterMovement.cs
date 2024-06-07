@@ -4,7 +4,7 @@ using System.Collections;
 public class monsterMovement : MonoBehaviour {
 
 	public Rigidbody2D rb;
-	private GameControl gameControl;
+	private GameController gameControl;
 	public Vector2 velocity;
 	private int timer;
 	// Use this for initialization
@@ -15,7 +15,7 @@ public class monsterMovement : MonoBehaviour {
 		GameObject gameControllerObject = GameObject.FindWithTag ("GameController");
 		if (gameControllerObject != null)
 		{
-			gameControl = gameControllerObject.GetComponent <GameControl>();
+			gameControl = gameControllerObject.GetComponent <GameController>();
 		}
 		if (gameControl == null)
 		{

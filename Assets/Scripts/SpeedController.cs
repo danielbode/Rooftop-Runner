@@ -1,15 +1,16 @@
 ﻿using UnityEngine;
-using System.Collections;
 
-public class Geschwindigkeitskontrolle : MonoBehaviour  {
+public class SpeedController : MonoBehaviour  {
 
-	public float geschwindigkeit;
+	public float Acceleration;
+	public int FloorSpeed;
+	public int BackgroundSpeed;
 	private int i;
 	private bool unsterblich;
 
 	// Use this for initialization
 	void Start () {
-		geschwindigkeit = 1;
+		Acceleration = 1;
 		unsterblich = false;
 	}
 	
@@ -17,7 +18,7 @@ public class Geschwindigkeitskontrolle : MonoBehaviour  {
 	void Update () {
 		i++;
 		if (i == 500) {
-			geschwindigkeit += 0.05f;
+			Acceleration += 0.05f;
 			i = 0;
 		}
 	
@@ -26,13 +27,13 @@ public class Geschwindigkeitskontrolle : MonoBehaviour  {
 	public void extraGeschw()
 	{
 		unsterblich = true;
-		geschwindigkeit += 3;
+		Acceleration += 3;
 	}
 
 	public void extraGeschwEnde()
 	{
 		unsterblich = false;
-		geschwindigkeit -= 3;
+		Acceleration -= 3;
 	}
 
 	public bool getUnsterblich()

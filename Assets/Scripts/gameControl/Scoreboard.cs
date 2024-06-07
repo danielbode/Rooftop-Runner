@@ -11,7 +11,7 @@ public class Scoreboard : MonoBehaviour {
 
 	// Use this for initialization
 	void Update () {
-		if (gameControl.GetComponent<GameControl>().GetGameOn ()) {
+		if (gameControl.GetComponent<GameController>().GetGameOn ()) {
 			scoreZaehlen ();
 		}
 	}
@@ -34,7 +34,7 @@ public class Scoreboard : MonoBehaviour {
 		scoreZeit++;
 		int wannScoreDazu = 20;
 
-		if(gameControl.gameObject.GetComponent<Geschwindigkeitskontrolle>().getUnsterblich())
+		if(gameControl.gameObject.GetComponent<SpeedController>().getUnsterblich())
 		{
 			wannScoreDazu = 1;
 		}

@@ -667,7 +667,7 @@ GameObject:
   - component: {fileID: 658482921}
   - component: {fileID: 658482922}
   m_Layer: 0
-  m_Name: roof2
+  m_Name: Floor_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -682,7 +682,7 @@ Transform:
   m_GameObject: {fileID: 658482919}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 25, y: -5.3, z: 0}
+  m_LocalPosition: {x: 25, y: 0, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -727,8 +727,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c788caed2852c0448b16c8062e7232bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rb: {fileID: 658482921}
-  speed: -7
+  GameControllerGameObject: {fileID: 1931116708}
+  Type: 0
 --- !u!212 &658482923
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1262,8 +1262,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c788caed2852c0448b16c8062e7232bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rb: {fileID: 875554670}
-  speed: -2
+  GameControllerGameObject: {fileID: 1931116708}
+  Type: 1
 --- !u!50 &875554670
 Rigidbody2D:
   serializedVersion: 4
@@ -1906,7 +1906,7 @@ GameObject:
   - component: {fileID: 1288229524}
   - component: {fileID: 1288229525}
   m_Layer: 0
-  m_Name: roof1
+  m_Name: Floor_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1921,7 +1921,7 @@ Transform:
   m_GameObject: {fileID: 1288229522}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -5.3, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1966,8 +1966,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c788caed2852c0448b16c8062e7232bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rb: {fileID: 1288229524}
-  speed: -7
+  GameControllerGameObject: {fileID: 1931116708}
+  Type: 0
 --- !u!212 &1288229526
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2277,8 +2277,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c788caed2852c0448b16c8062e7232bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rb: {fileID: 1475926177}
-  speed: -2
+  GameControllerGameObject: {fileID: 1931116708}
+  Type: 1
 --- !u!50 &1475926177
 Rigidbody2D:
   serializedVersion: 4
@@ -2872,7 +2872,7 @@ GameObject:
   - component: {fileID: 1888938155}
   - component: {fileID: 1888938158}
   m_Layer: 0
-  m_Name: Dach
+  m_Name: Floor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2910,7 +2910,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.3, y: -5}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -2921,7 +2921,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 25, y: 1.4}
+  m_Size: {x: 25.4, y: 1.9}
   m_EdgeRadius: 0
 --- !u!212 &1888938156
 SpriteRenderer:
@@ -2984,7 +2984,7 @@ Transform:
   m_GameObject: {fileID: 1888938154}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -5.3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -3110,10 +3110,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1931116708}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0fd04b1a306611648862d32abb19dc35, type: 3}
+  m_Script: {fileID: 11500000, guid: 4e1180c15ade0a34eb3638fbdcd0152c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  geschwindigkeit: 0
+  Acceleration: 0
+  FloorSpeed: 7
+  BackgroundSpeed: 2
 --- !u!95 &1931116714
 Animator:
   serializedVersion: 5

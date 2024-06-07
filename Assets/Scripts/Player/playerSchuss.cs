@@ -5,7 +5,7 @@ public class playerSchuss : MonoBehaviour {
 
 	public Transform schuss;
 	private int timer;
-	private GameControl gameControl;
+	private GameController gameControl;
 	private swipeEingabe swipe;
 	public int schussAnzahl;
 
@@ -14,7 +14,7 @@ public class playerSchuss : MonoBehaviour {
 		GameObject gameControllerObject = GameObject.FindWithTag ("GameController");
 		if (gameControllerObject != null)
 		{
-			gameControl = gameControllerObject.GetComponent <GameControl>();
+			gameControl = gameControllerObject.GetComponent <GameController>();
 		}
 		if (gameControl == null)
 		{

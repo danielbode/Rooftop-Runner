@@ -4,7 +4,7 @@ using System.Collections;
 public class monsterSchuss : MonoBehaviour {
 
 	public Transform schuss;
-	private GameControl gameControl;
+	private GameController gameControl;
 
 	// Use this for initialization
 	void Start () {
@@ -12,7 +12,7 @@ public class monsterSchuss : MonoBehaviour {
 		GameObject gameControllerObject = GameObject.FindWithTag ("GameController");
 		if (gameControllerObject != null)
 		{
-			gameControl = gameControllerObject.GetComponent <GameControl>();
+			gameControl = gameControllerObject.GetComponent <GameController>();
 		}
 		if (gameControl == null)
 		{

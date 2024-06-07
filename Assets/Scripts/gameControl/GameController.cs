@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class GameControl : MonoBehaviour {
+public class GameController : MonoBehaviour {
 
 	Animator run;
 	public int anzahlHindernisse;
