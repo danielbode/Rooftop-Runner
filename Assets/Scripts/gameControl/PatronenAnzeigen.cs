@@ -4,7 +4,7 @@ using System.Collections;
 public class PatronenAnzeigen : MonoBehaviour {
 
 	public Transform[] patronen;
-	public playerSchuss schuss;
+	public PlayerShooting schuss;
 	public Transform patrone;
 	public int patronenAnzahl;
 	private int maxPatronen;
@@ -15,7 +15,7 @@ public class PatronenAnzeigen : MonoBehaviour {
 		GameObject playerObject = GameObject.FindWithTag ("Player");
 		if (playerObject != null)
 		{
-			schuss = playerObject.GetComponent <playerSchuss>();
+			schuss = playerObject.GetComponent <PlayerShooting>();
 		}
 		if (schuss == null)
 		{
