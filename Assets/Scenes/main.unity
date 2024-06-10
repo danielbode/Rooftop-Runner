@@ -570,6 +570,18 @@ Transform:
   - {fileID: 293403808}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &591464227 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 188250, guid: 15418aee954ae024d930414735b266bb,
+    type: 3}
+  m_PrefabInstance: {fileID: 1280649479}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &645232551 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1457848937984675856, guid: 5eb4f8cbd9b62f54893eecc021923dc2,
+    type: 3}
+  m_PrefabInstance: {fileID: 1944069559}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &645232552 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5241121287200319244, guid: 5eb4f8cbd9b62f54893eecc021923dc2,
@@ -1024,6 +1036,12 @@ RectTransform:
   m_AnchoredPosition: {x: 129.99995, y: -100}
   m_SizeDelta: {x: 240, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &875554667 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 188250, guid: 15418aee954ae024d930414735b266bb,
+    type: 3}
+  m_PrefabInstance: {fileID: 782528413}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &900830584
 GameObject:
   m_ObjectHideFlags: 0
@@ -1379,9 +1397,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f2974c0b31b63248876b940b37b5768, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  back1: {fileID: 1280649480}
-  back2: {fileID: 650327726}
-  turnPoint: -25
+  Object1: {fileID: 591464227}
+  Object2: {fileID: 875554667}
+  TurningPoint: -25
 --- !u!1 &1199518997
 GameObject:
   m_ObjectHideFlags: 0
@@ -1693,6 +1711,12 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 412708, guid: 15418aee954ae024d930414735b266bb,
     type: 3}
   m_PrefabInstance: {fileID: 1280649479}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1288229522 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1457848937984675856, guid: 5eb4f8cbd9b62f54893eecc021923dc2,
+    type: 3}
+  m_PrefabInstance: {fileID: 566186184258564859}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &1288229523 stripped
 Transform:
@@ -2553,9 +2577,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f2974c0b31b63248876b940b37b5768, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  back1: {fileID: 1288229523}
-  back2: {fileID: 645232552}
-  turnPoint: -25
+  Object1: {fileID: 1288229522}
+  Object2: {fileID: 645232551}
+  TurningPoint: -25
 --- !u!1 &1931116708
 GameObject:
   m_ObjectHideFlags: 0
