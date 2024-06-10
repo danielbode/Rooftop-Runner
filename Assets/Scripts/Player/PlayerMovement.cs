@@ -1,23 +1,31 @@
 ﻿using UnityEngine;
 using System.Collections;
+using static UnityEngine.InputSystem.InputAction;
+using System;
 
-public class Movement_Player : MonoBehaviour {
+public class PlayerMovement : MonoBehaviour {
 
 	public Rigidbody2D rb2D;
-	public Vector2 kraft;
-	private int zahl;
 	private GameController gameControl;
 
-	private swipeEingabe swipe;
-	private int geduckt;
+	public float jumpForce;
+	public float jumpCooldown;
+	private int jumpCount;
+	private float lastJumpTime;
+
+	public float duckForce;
+	public float duckDuration;
+	private bool isDucked;
+
+	public Vector3 initialPlayerScale;
+	public Vector3 miniPlayerScale;
+
 	private int unsterblich;
 	private playerSchuss schuss;
-
 
 	void Start () 
 	{
 		rb2D = GetComponent<Rigidbody2D>();
-
 
 		GameObject gameControllerObject = GameObject.FindWithTag ("GameController");
 		if (gameControllerObject != null)
@@ -29,10 +37,7 @@ public class Movement_Player : MonoBehaviour {
 			Debug.Log ("Cannot find 'GameController' script");
 		}
 
-		swipe = GetComponent<swipeEingabe> ();
 		schuss = GetComponent<playerSchuss> ();
-
-
 	}
 	
 
@@ -40,7 +45,7 @@ public class Movement_Player : MonoBehaviour {
 	{
 		if (other.tag == "roof") // immer wenn trigger am boden berührt wird wird zahl wieder auf 0 gesetzt damit wieder gesprungen werden kann
 		{
-			zahl = 0;
+			jumpCount = 0;
 		}
 
 		if (other.tag == "hindernis" || other.tag == "monster") //man stirbt wenn man den trigger von hindernissen oder monstern berührt
@@ -73,15 +78,8 @@ public class Movement_Player : MonoBehaviour {
 
 	}
 
-
-	
 	void Update() 
 	{
-		if (gameControl.GetGameOn () ) {
-			springen ();
-			ducken ();
-		}
-
 		if (unsterblich > 0) 
 		{
 			unsterblich++;
@@ -100,78 +98,44 @@ public class Movement_Player : MonoBehaviour {
 		}
 	}
 
-	/*//springen indem Kraft auf den Player einwirkt
-	void springen()
+	public void OnJump(CallbackContext callbackContext)
 	{
-		if (Input.GetKeyUp (KeyCode.Mouse0) && zahl == 0)
-		{
-			rb2D.AddForce (kraft, ForceMode2D.Force);
-			zahl ++;
-		} else if (Input.GetKeyUp (KeyCode.Mouse0) && zahl == 1) 
-		{
-			rb2D.AddForce (kraft / 1.5f, ForceMode2D.Force);
-			zahl ++;
-		}
-	}*/
 
-	//springen indem eine Beschleunigung übertragen wird. Vorteil: auch wenn 
-	//der player herunterfällt springt er noch nach oben
-	void springen()
-	{
-		if (Input.GetKeyDown (KeyCode.S) && zahl < 2)
+		if (Time.time - lastJumpTime < jumpCooldown) return;
+		if (gameControl.GetGameOn() && jumpCount < 2)
 		{
-			if(geduckt > 0)
+			if (isDucked)
 			{
-				geduckt = 0;
-				this.transform.localScale = new Vector3 (0.25f, 0.25f, 1);
+				isDucked = false;
+				this.transform.localScale = initialPlayerScale;
 			}
-			rb2D.velocity = kraft; 
-			zahl ++;
-		} 
-
-		if (swipe.swipeNachOben && zahl < 2)
-		{
-			if(geduckt > 0)						// aufstehen wenn man während der player geeduckt ist springt
-			{
-				geduckt = 0;
-				this.transform.localScale = new Vector3 (0.25f, 0.25f, 1);
-			}
-			rb2D.velocity = kraft; 
-			zahl ++;
-			swipe.swipeNachOben = false;
+			rb2D.velocity = new Vector2(0, jumpForce);
+			jumpCount++;
 		}
-
-	
+		lastJumpTime = Time.time;
 	}
 
-	void ducken()
+	public void OnDuck(CallbackContext callbackContext)
 	{
-		if (geduckt > 0) {
-			geduckt++;
-		}
-
-		if (swipe.swipeNachUnten || Input.GetKey (KeyCode.D)) {
-			geduckt = 1;
-			this.transform.localScale = new Vector3(0.25f,0.15f,1);
-			if(zahl == 0)
+		if (gameControl.GetGameOn())
+		{
+			isDucked = true;
+			this.transform.localScale = miniPlayerScale;
+			rb2D.velocity = new Vector2(0, duckForce);
+			StartCoroutine(DoAfterDelay(duckDuration, () =>
 			{
-				this.transform.position = new Vector3(-6.5f,-3.5f,0);
-			}
-			swipe.swipeNachUnten = false;
-
-		}
-
-		if (geduckt > 40) {
-			geduckt = 0;
-			this.transform.localScale = new Vector3 (0.25f, 0.25f, 1);
-			this.transform.position = new Vector3(-6.5f,-3f,0);
+				if (!this.transform.localScale.Equals(initialPlayerScale))
+				{
+					transform.localScale = initialPlayerScale;
+				}
+			}));
 		}
 	}
 
 	public void unsterblichMode()
 	{
 		unsterblich = 1;
-		rb2D.velocity = kraft; 
+		rb2D.velocity = new Vector2(0, jumpForce); 
 		transform.position = new Vector3 (-6.5f, 1, 0);
 
 		rb2D.isKinematic = true;
@@ -197,4 +161,9 @@ public class Movement_Player : MonoBehaviour {
 
 	}
 
+	IEnumerator DoAfterDelay(float delaySeconds, Action thingToDo)
+	{
+		yield return new WaitForSeconds(delaySeconds);
+		thingToDo();
+	}
 }
