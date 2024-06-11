@@ -18,6 +18,6 @@ public class pauseButton : MonoBehaviour {
 
 	public void pause()
 	{
-		gameControl.Pause ();
+		gameControl.TogglePause ();
 	}
 }

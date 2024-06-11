@@ -2303,7 +2303,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1931116710}
   - component: {fileID: 1931116709}
-  - component: {fileID: 1931116712}
   - component: {fileID: 1931116711}
   - component: {fileID: 1931116713}
   m_Layer: 0
@@ -2372,18 +2371,6 @@ MonoBehaviour:
   schuss: {fileID: 0}
   patrone: {fileID: 435160, guid: 359356b275f5bd9408d99a87c3d1450e, type: 3}
   patronenAnzahl: 0
---- !u!114 &1931116712
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1931116708}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fbcfd687f5f7a9246bbc2af1c6ca7e4c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1931116713
 MonoBehaviour:
   m_ObjectHideFlags: 0
