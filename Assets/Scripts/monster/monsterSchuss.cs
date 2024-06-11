@@ -31,7 +31,7 @@ public class monsterSchuss : MonoBehaviour {
 	{
 
 		yield return new WaitForSeconds (1);
-		while (gameControl.GetGameOn()) {
+		while (true) {
 			Instantiate (schuss, this.transform.position, Quaternion.identity);
 			yield return new WaitForSeconds (1.5f);
 		}

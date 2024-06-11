@@ -30,7 +30,7 @@ public class PlayerShooting : MonoBehaviour
     public void OnShoot(CallbackContext callbackContext)
     {
         if (Time.time - lastShootTime < shootCooldown) return;
-        if (gameControl.GetGameOn() && currentNumberOfBullets > 0)
+        if (Time.timeScale != 0 && currentNumberOfBullets > 0)
         {
             Instantiate(bullet, new Vector2(this.transform.position.x + 1, this.transform.position.y), Quaternion.identity);
             currentNumberOfBullets--;

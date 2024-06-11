@@ -2326,21 +2326,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1839773728}
-  anzahlHindernisse: 4
-  hindernisse:
-  - {fileID: 406300, guid: aea35d22c2bac5245a8e91c17925f034, type: 3}
-  - {fileID: 413140, guid: db34fd479aab54b4b8264ad281caaf92, type: 3}
-  - {fileID: 489860, guid: 926fad417fbfc654c943de8666c3fdd2, type: 3}
-  - {fileID: 445772, guid: 41ffcc354b8d0394f86dd74485086805, type: 3}
+  obstacles:
+  - {fileID: 113140, guid: db34fd479aab54b4b8264ad281caaf92, type: 3}
+  - {fileID: 188604, guid: 41ffcc354b8d0394f86dd74485086805, type: 3}
+  - {fileID: 173112, guid: aea35d22c2bac5245a8e91c17925f034, type: 3}
+  - {fileID: 190638, guid: 926fad417fbfc654c943de8666c3fdd2, type: 3}
   items:
-  - {fileID: 435082, guid: c5e3cae87efe96c4982a753e192f7140, type: 3}
-  - {fileID: 450008, guid: 7bee0494fc378534181987952e8e2423, type: 3}
-  anzahlItems: 2
-  monster: {fileID: 455712, guid: b2b7fd833c3dafe4096aceed80190c71, type: 3}
+  - {fileID: 147068, guid: 7bee0494fc378534181987952e8e2423, type: 3}
+  - {fileID: 102502, guid: c5e3cae87efe96c4982a753e192f7140, type: 3}
+  bossMonster: {fileID: 141280, guid: b2b7fd833c3dafe4096aceed80190c71, type: 3}
   gameOverPanel: {fileID: 900830584}
   neuerHighscore: {fileID: 1199518997}
+  initialLifes: 1
   score: {fileID: 1520468645}
-  leben: 0
 --- !u!4 &1931116710
 Transform:
   m_ObjectHideFlags: 0

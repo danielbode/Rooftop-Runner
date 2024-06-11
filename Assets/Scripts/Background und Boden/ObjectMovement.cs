@@ -23,7 +23,7 @@ public class ObjectMovement : MonoBehaviour
 
     void Update()
     {
-        if (GameController.GetGameOn())
+        if (Time.timeScale != 0)
         {
             Move();
         }

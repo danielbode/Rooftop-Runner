@@ -59,16 +59,7 @@ public class Movement_Hindernisse : MonoBehaviour {
 			g = gameControl.gameObject.GetComponent<SpeedController> ().Acceleration;
 		}
 
-		if (gameControl.GetGameOn ()) {
-
 			rb2D.MovePosition (rb2D.position + velocity* g * Time.fixedDeltaTime);
-
-		} 
-		else 
-		{
-			rb2D.MovePosition (rb2D.position);
-		}
-
 	}
 	
 

@@ -27,7 +27,7 @@ public class monsterMovement : MonoBehaviour {
 	
 	// Update is called once per frame
 	void FixedUpdate () {
-		if (gameControl.GetGameOn ()) {
+		if (Time.timeScale != 0) {
 			//StartCoroutine (bewegung ());
 			bewegung ();
 		}

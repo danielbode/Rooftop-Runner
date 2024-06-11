@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 11458974}
   - component: {fileID: 5019968}
   m_Layer: 0
-  m_Name: Hindernis oben
+  m_Name: ObstacleHigh
   m_TagString: hindernis
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

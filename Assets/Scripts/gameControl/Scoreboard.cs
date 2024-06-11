@@ -11,7 +11,7 @@ public class Scoreboard : MonoBehaviour {
 
 	// Use this for initialization
 	void Update () {
-		if (gameControl.GetComponent<GameController>().GetGameOn ()) {
+		if (Time.timeScale != 0) {
 			scoreZaehlen ();
 		}
 	}

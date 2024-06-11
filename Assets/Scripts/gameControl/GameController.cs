@@ -3,101 +3,83 @@ using System.Collections;
 
 public class GameController : MonoBehaviour
 {
-
     public GameObject player;
-    Animator run;
-    public int anzahlHindernisse;
-    public Transform[] hindernisse;
-    public Transform[] items;
-    public int anzahlItems;
-    public Transform monster;
+
+    public GameObject[] obstacles;
+    public GameObject[] items;
+    public GameObject bossMonster;
 
     public GameObject gameOverPanel;
     public GameObject neuerHighscore;
 
+    public int initialLifes;
 
-    private int auswahlHoM;
+    private int counterBossmonster;
+    private Animator playerAnimator;
+
 
     public GameObject score;
-    public int leben;
-
+    private int lifes;
 
     //public Highscore highscore;
-
 
 
     // Use this for initialization
     void Start()
     {
-        run = player.GetComponent<Animator>();
+        playerAnimator = player.GetComponent<Animator>();
+        playerAnimator.SetBool("gameOn", true);
         //highscore = new Highscore ();
-
 
         gameOverPanel.SetActive(false);
         neuerHighscore.SetActive(false);
 
-        run.SetBool("gameOn", true);
-        StartCoroutine(Hindernisse());
-        StartCoroutine(ItemsErzeugen());
+        Time.timeScale = 1;
+        StartCoroutine(CreateObstacles());
+        StartCoroutine(CreateItems());
         //gameoverText.text = "";
-        auswahlHoM = 0;
-        leben = 1;
-
-
-    }
-    // Update is called once per frame
-
-    void Update()
-    {
-
-
+        counterBossmonster = 0;
+        lifes = initialLifes;
     }
 
-    IEnumerator Hindernisse()
+    IEnumerator CreateObstacles()
     {
         yield return new WaitForSeconds(1);
-        while (run.GetBool("gameOn"))
+        while (Time.timeScale != 0)
         {
-
-            if (auswahlHoM == 10)
+            if (counterBossmonster == 10)
             {
-                Instantiate(monster);
+                Instantiate(bossMonster);
                 yield return new WaitForSeconds(1);
-                auswahlHoM = 0;
+                counterBossmonster = 0;
             }
             else
             {
-
-                auswahlHoM++;
-                int ii = (int)Random.Range(0, anzahlHindernisse);
-                Instantiate(hindernisse[ii], hindernisse[ii].position, Quaternion.identity);
-                float zufall = Random.value * 2;
-                yield return new WaitForSeconds(zufall + 1);
-
+                counterBossmonster++;
+                int obstacleIndex = (int) Random.Range(0, obstacles.Length);
+                Instantiate(obstacles[obstacleIndex], obstacles[obstacleIndex].transform.position, Quaternion.identity);
+                float additionalTime = Random.value * 2; //wait up to 2 additional seconds to vary distance between obstacles
+                yield return new WaitForSeconds(additionalTime + 1);
             }
-
-
         }
     }
 
-    IEnumerator ItemsErzeugen()
+    IEnumerator CreateItems()
     {
         yield return new WaitForSeconds(30);
-        while (run.GetBool("gameOn"))
+        while (Time.timeScale != 0)
         {
-            int ii = (int)Random.Range(0, anzahlItems);
-            Instantiate(items[ii], items[ii].position, Quaternion.identity);
-            float zufall = Random.value * 5;
-            yield return new WaitForSeconds(zufall + 30);
-
+            int itemIndex = (int) Random.Range(0, items.Length);
+            Instantiate(items[itemIndex], items[itemIndex].transform.position, Quaternion.identity);
+            float additionalTime = Random.value * 5;
+            yield return new WaitForSeconds(additionalTime + 30);
         }
     }
-
-
 
     public void Gameover()
     {
-        run.SetBool("gameOn", false);
+        Time.timeScale = 0;
+        lifes = 0;
         //gameoverText.text = "Game Over!";
         int aktuellerScore = score.GetComponent<Scoreboard>().getScore();
         if (aktuellerScore > PlayerPrefs.GetInt("highscore"))
@@ -107,46 +89,15 @@ public class GameController : MonoBehaviour
         Highscore.NeuerScore(aktuellerScore);
         gameOverPanel.SetActive(true);
         gameOverPanel.GetComponent<GameOverPanel>().aktualisieren();
-
-        leben = 0;
-
-
     }
 
-    //wird von pauseButton aufgerufen wenn der button gedrückt wird
     public void Pause()
     {
-        if (leben > 0)
+        if (Time.timeScale != 0) {
+            Time.timeScale = 0;
+        } else
         {
-            if (run.GetBool("gameOn"))
-            {
-                run.SetBool("gameOn", false);
-            }
-            else
-            {
-                StartCoroutine(Unpause());
-
-            }
+            Time.timeScale = 1;
         }
     }
-
-
-    public bool GetGameOn()
-    {
-        return run.GetBool("gameOn");
-    }
-
-    IEnumerator Unpause()
-    {
-        yield return new WaitForSeconds(0.2f);
-        run.SetBool("gameOn", true);
-        StopCoroutine(Hindernisse());       //um Fehler zu vermeiden, dass keine hindernisse mehr erzeugt werden
-        StartCoroutine(Hindernisse());
-    }
-
-
-
-
-
-
 }

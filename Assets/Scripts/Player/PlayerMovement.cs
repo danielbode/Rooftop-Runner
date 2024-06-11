@@ -103,7 +103,7 @@ public class PlayerMovement : MonoBehaviour
     {
 
         if (Time.time - lastJumpTime < jumpCooldown) return;
-        if (gameControl.GetGameOn() && jumpCount < 2)
+        if (Time.timeScale != 0 && jumpCount < 2)
         {
             if (isDucked)
             {
@@ -118,7 +118,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void OnDuck(CallbackContext callbackContext)
     {
-        if (gameControl.GetGameOn())
+        if (Time.timeScale != 0)
         {
             isDucked = true;
             this.transform.localScale = miniPlayerScale;
