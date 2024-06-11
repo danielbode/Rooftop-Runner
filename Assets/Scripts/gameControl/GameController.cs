@@ -4,6 +4,7 @@ using System.Collections;
 public class GameController : MonoBehaviour
 {
 
+    public GameObject player;
     Animator run;
     public int anzahlHindernisse;
     public Transform[] hindernisse;
@@ -28,7 +29,7 @@ public class GameController : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        run = GetComponent<Animator>();
+        run = player.GetComponent<Animator>();
         //highscore = new Highscore ();
 
 

@@ -2216,6 +2216,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 237da15c2e6528e4382ca003053f12f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1839773728 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 137602, guid: 4da666dc4edcee941aaaca536f8b3bec,
+    type: 3}
+  m_PrefabInstance: {fileID: 2035284921}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1888938154
 GameObject:
   m_ObjectHideFlags: 0
@@ -2377,7 +2383,6 @@ GameObject:
   - component: {fileID: 1931116712}
   - component: {fileID: 1931116711}
   - component: {fileID: 1931116713}
-  - component: {fileID: 1931116714}
   m_Layer: 0
   m_Name: GameController
   m_TagString: GameController
@@ -2397,6 +2402,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 232ad100d1af2b047b1137f1cab7601b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 1839773728}
   anzahlHindernisse: 4
   hindernisse:
   - {fileID: 406300, guid: aea35d22c2bac5245a8e91c17925f034, type: 3}
@@ -2473,27 +2479,6 @@ MonoBehaviour:
   Acceleration: 0
   FloorSpeed: 7
   BackgroundSpeed: 2
---- !u!95 &1931116714
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1931116708}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: a7bbdd2507efc1341a091a6c32c4c54d, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!1001 &1944069559
 PrefabInstance:
   m_ObjectHideFlags: 0
