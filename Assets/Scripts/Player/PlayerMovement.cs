@@ -43,11 +43,6 @@ public class PlayerMovement : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.tag == "roof") // immer wenn trigger am boden berührt wird wird zahl wieder auf 0 gesetzt damit wieder gesprungen werden kann
-        {
-            jumpCount = 0;
-        }
-
         if (other.tag == "hindernis" || other.tag == "monster") //man stirbt wenn man den trigger von hindernissen oder monstern berührt
         {
             if (unsterblich == 0)
@@ -72,6 +67,11 @@ public class PlayerMovement : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D other)  // monster wird zerstört wenn man von oben draufspringt
     {
+        if (other.gameObject.tag == "roof") // immer wenn trigger am boden berührt wird wird zahl wieder auf 0 gesetzt damit wieder gesprungen werden kann
+        {
+            jumpCount = 0;
+        }
+
         if (other.gameObject.tag == "monster")
         {
             Destroy(other.gameObject);
