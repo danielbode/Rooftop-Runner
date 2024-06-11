@@ -17,6 +17,8 @@ public class GameController : MonoBehaviour
     private int counterBossmonster;
     private Animator playerAnimator;
 
+    private bool gameOver;
+
     // Use this for initialization
     void Start()
     {
@@ -69,6 +71,7 @@ public class GameController : MonoBehaviour
     }
     public void TogglePause()
     {
+        if (gameOver) return;
         if (Time.timeScale != 0)
         {
             Time.timeScale = 0;
@@ -81,6 +84,7 @@ public class GameController : MonoBehaviour
 
     public void Gameover()
     {
+        gameOver = true;
         Time.timeScale = 0;
         int aktuellerScore = score.GetComponent<Scoreboard>().getScore();
         if (aktuellerScore > PlayerPrefs.GetInt("highscore"))
