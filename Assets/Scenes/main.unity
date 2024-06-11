@@ -2503,7 +2503,19 @@ MonoBehaviour:
     m_ActionId: 99581c86-a0c6-4cd0-a6a8-5254f17c4221
     m_ActionName: Player/Duck[/Keyboard/s]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1839773747}
+        m_TargetAssemblyTypeName: PlayerShooting, Assembly-CSharp
+        m_MethodName: OnShoot
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 0d7642bd-a0db-4f37-b48c-659f0539fe82
     m_ActionName: Player/Shoot[/Keyboard/space]
   - m_PersistentCalls:
@@ -2551,6 +2563,18 @@ MonoBehaviour:
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!114 &1839773747 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 11497980, guid: 4da666dc4edcee941aaaca536f8b3bec,
+    type: 3}
+  m_PrefabInstance: {fileID: 2035284921}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1839773728}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63356cbe50127344bb0be4e64a12fde7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1888938154
 GameObject:
   m_ObjectHideFlags: 0
@@ -4071,6 +4095,22 @@ PrefabInstance:
     - target: {fileID: 11437602, guid: 4da666dc4edcee941aaaca536f8b3bec, type: 3}
       propertyPath: initialPlayerScale.z
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11497980, guid: 4da666dc4edcee941aaaca536f8b3bec, type: 3}
+      propertyPath: bullet
+      value: 
+      objectReference: {fileID: 470478, guid: 1efb01fc3bad65e45bd07621852edda3, type: 3}
+    - target: {fileID: 11497980, guid: 4da666dc4edcee941aaaca536f8b3bec, type: 3}
+      propertyPath: shootCooldown
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 11497980, guid: 4da666dc4edcee941aaaca536f8b3bec, type: 3}
+      propertyPath: numberOfBullets
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 11497980, guid: 4da666dc4edcee941aaaca536f8b3bec, type: 3}
+      propertyPath: maxNumberOfBullets
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

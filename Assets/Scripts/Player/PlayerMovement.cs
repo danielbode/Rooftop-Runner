@@ -64,7 +64,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (other.tag == "patronen")
         {
-            schuss.PatronenAuffuellen();
+            schuss.RefillBullets();
             Destroy(other.gameObject);
 
         }

@@ -1,13 +1,16 @@
 ﻿using UnityEngine;
+using static UnityEngine.InputSystem.InputAction;
 
 public class PlayerShooting : MonoBehaviour
 {
+    public Transform bullet;
 
-    public Transform schuss;
-    private int timer;
     private GameController gameControl;
-    private swipeEingabe swipe;
-    public int schussAnzahl;
+
+    public float shootCooldown;
+    public int maxNumberOfBullets;
+    public int currentNumberOfBullets;
+    private float lastShootTime;
 
     void Start()
     {
@@ -21,43 +24,22 @@ public class PlayerShooting : MonoBehaviour
             Debug.Log("Cannot find 'GameController' script");
         }
 
-        swipe = GetComponent<swipeEingabe>();
-
-        timer = 0;
+        currentNumberOfBullets = maxNumberOfBullets;
     }
 
-    // Update is called once per frame
-    void Update()
+    public void OnShoot(CallbackContext callbackContext)
     {
-        if (gameControl.GetGameOn())
+        if (Time.time - lastShootTime < shootCooldown) return;
+        if (gameControl.GetGameOn() && currentNumberOfBullets > 0)
         {
-            schiessen();
+            Instantiate(bullet, new Vector2(this.transform.position.x + 1, this.transform.position.y), Quaternion.identity);
+            currentNumberOfBullets--;
         }
-
+        lastShootTime = Time.time;
     }
 
-    void schiessen()
+    public void RefillBullets()
     {
-        if (swipe.swipeNachRechts || Input.GetKey(KeyCode.Space))
-        {
-            if (timer % 50 == 0 && schussAnzahl > 0)
-            {
-                Instantiate(schuss, new Vector2(this.transform.position.x + 1, this.transform.position.y), Quaternion.identity);
-                timer++;
-                swipe.swipeNachRechts = false;
-                schussAnzahl--;
-            }
-            timer++;
-        }
-        else
-        {
-            timer = 0;
-        }
-
-    }
-
-    public void PatronenAuffuellen()
-    {
-        schussAnzahl = 10;
+        currentNumberOfBullets = maxNumberOfBullets;
     }
 }

@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 11415296}
   - component: {fileID: 5856962}
   m_Layer: 0
-  m_Name: SchussPl
+  m_Name: BulletPlayer
   m_TagString: schuss
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

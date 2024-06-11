@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using System.Collections;
 
 public class PatronenAnzeigen : MonoBehaviour {
 
@@ -22,10 +21,10 @@ public class PatronenAnzeigen : MonoBehaviour {
 			Debug.Log ("Cannot find 'GameController' script");
 		}
 
-		maxPatronen = schuss.schussAnzahl;
-		patronenAnzahl = schuss.schussAnzahl;
+		maxPatronen = schuss.currentNumberOfBullets;
+		patronenAnzahl = schuss.currentNumberOfBullets;
 
-		patronen = new Transform[schuss.schussAnzahl];
+		patronen = new Transform[schuss.currentNumberOfBullets];
 
 		for (int i = 0; i < maxPatronen; i++)
 		{
@@ -37,12 +36,12 @@ public class PatronenAnzeigen : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-		if (patronenAnzahl > schuss.schussAnzahl) {
+		if (patronenAnzahl > schuss.currentNumberOfBullets) {
 
 			patronenAktualisieren ();
 		}
 
-		if(patronenAnzahl < schuss.schussAnzahl)
+		if(patronenAnzahl < schuss.currentNumberOfBullets)
 		{
 			neuePatronen();
 		}
@@ -54,12 +53,12 @@ public class PatronenAnzeigen : MonoBehaviour {
 	{
 		for (int ii = maxPatronen -1; ii >= 0; ii--) 
 		{
-			if( ii >= schuss.schussAnzahl)
+			if( ii >= schuss.currentNumberOfBullets)
 			{
 
 				patronen[ii].gameObject.SetActive(false);
 			
-				patronenAnzahl = schuss.schussAnzahl;
+				patronenAnzahl = schuss.currentNumberOfBullets;
 			}
 		}
 	}
@@ -71,7 +70,7 @@ public class PatronenAnzeigen : MonoBehaviour {
 			patronen [i].gameObject.SetActive(true);
 		}
 
-		patronenAnzahl = schuss.schussAnzahl;
+		patronenAnzahl = schuss.currentNumberOfBullets;
 	}
 
 }
