@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 5020784}
   - component: {fileID: 6147206}
   - component: {fileID: 6180472}
-  - component: {fileID: 11469596}
   m_Layer: 0
   m_Name: MonsterRegular
   m_TagString: monster
@@ -221,16 +220,3 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.1276747, y: 0.06700006}
   m_EdgeRadius: 0
---- !u!114 &11469596
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 190638}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 30f4a45d9d9a4034b81925704e74910f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  schuss: {fileID: 466784, guid: ba7174d5efb65f640815bd3d1d738728, type: 3}

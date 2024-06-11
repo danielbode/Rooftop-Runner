@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5005802}
   - component: {fileID: 6186170}
   m_Layer: 0
-  m_Name: Schuss
+  m_Name: BulletMonster
   m_TagString: hindernis
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
