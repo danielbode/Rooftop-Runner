@@ -12,6 +12,8 @@ TagManager:
   - unsterblich
   - patronen
   - Controller
+  - Head
+  - Body
   layers:
   - Default
   - TransparentFX

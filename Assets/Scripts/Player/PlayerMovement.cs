@@ -43,13 +43,6 @@ public class PlayerMovement : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.tag == "hindernis" || other.tag == "monster") //man stirbt wenn man den trigger von hindernissen oder monstern berührt
-        {
-            if (unsterblich == 0)
-            {
-                gameControl.Gameover();
-            }
-        }
 
         if (other.tag == "unsterblich")
         {
@@ -65,18 +58,23 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    void OnCollisionEnter2D(Collision2D other)  // monster wird zerstört wenn man von oben draufspringt
+    void OnCollisionEnter2D(Collision2D other)
     {
-        if (other.gameObject.tag == "roof") // immer wenn trigger am boden berührt wird wird zahl wieder auf 0 gesetzt damit wieder gesprungen werden kann
+        GameObject otherGameObject = other.gameObject;
+        Collider2D otherCollider = other.GetContact(0).collider;
+
+        if (otherGameObject.CompareTag("roof") || otherCollider.CompareTag("roof"))
         {
             jumpCount = 0;
         }
-
-        if (other.gameObject.tag == "monster")
+        else if (otherCollider.CompareTag("Head"))
         {
-            Destroy(other.gameObject);
+            Destroy(otherGameObject);
         }
-
+        else if (otherCollider.CompareTag("Body"))
+        {
+            gameControl.Gameover();
+        }
     }
 
     void Update()
