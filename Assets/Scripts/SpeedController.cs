@@ -4,8 +4,6 @@ public class SpeedController : MonoBehaviour
 {
 
     public float Acceleration;
-    public int FloorSpeed;
-    public int BackgroundSpeed;
     private int i;
     private bool unsterblich;
 

@@ -125,5 +125,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c788caed2852c0448b16c8062e7232bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GameControllerGameObject: {fileID: 0}
-  Type: 0
+  speed: {x: -7, y: 0}
+  affectedByGameAcceleration: 1
+  destroyWhenOutOfView: 0

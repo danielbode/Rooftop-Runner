@@ -97,12 +97,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 190638}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 338d744380eae164380193abd298a2a9, type: 3}
+  m_Script: {fileID: 11500000, guid: c788caed2852c0448b16c8062e7232bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  velocity: {x: -10, y: 0}
-  rb2D: {fileID: 5020784}
-  geschwVeraenderung: 1
+  speed: {x: -10, y: 0}
+  affectedByGameAcceleration: 1
+  destroyWhenOutOfView: 1
 --- !u!50 &5020784
 Rigidbody2D:
   serializedVersion: 4
