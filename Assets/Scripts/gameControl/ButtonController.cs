@@ -29,4 +29,9 @@ public class ButtonController : MonoBehaviour
     {
         SceneManager.LoadSceneAsync("MainMenu");
     }
+
+    public void Highscore()
+    {
+        SceneManager.LoadSceneAsync("Highscore");
+    }
 }
