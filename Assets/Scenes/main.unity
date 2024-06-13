@@ -1674,7 +1674,6 @@ GameObject:
   - component: {fileID: 1520468646}
   - component: {fileID: 1520468649}
   - component: {fileID: 1520468648}
-  - component: {fileID: 1520468647}
   m_Layer: 5
   m_Name: ScoreText
   m_TagString: Untagged
@@ -1701,20 +1700,6 @@ RectTransform:
   m_AnchoredPosition: {x: 100, y: -25}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1520468647
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1520468645}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 70a87e6de599f7e45bd4f89f160c1e32, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  scoreText: {fileID: 1520468648}
-  gameControl: {fileID: 1931116708}
 --- !u!114 &1520468648
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2163,6 +2148,7 @@ GameObject:
   - component: {fileID: 1931116710}
   - component: {fileID: 1931116709}
   - component: {fileID: 1931116713}
+  - component: {fileID: 1931116714}
   - component: {fileID: 1931116711}
   m_Layer: 0
   m_Name: GameController
@@ -2242,6 +2228,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Acceleration: 0
+--- !u!114 &1931116714
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1931116708}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1286177d39ff84d4dac547f0012ff247, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scoreText: {fileID: 1520468648}
+  updatesNeededForPointRegular: 20
+  updatesNeededForPointInvincible: 1
 --- !u!1001 &1944069559
 PrefabInstance:
   m_ObjectHideFlags: 0

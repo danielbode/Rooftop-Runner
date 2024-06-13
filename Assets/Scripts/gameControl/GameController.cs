@@ -60,7 +60,7 @@ public class GameController : MonoBehaviour
 
     IEnumerator CreateItems()
     {
-        yield return new WaitForSeconds(30);
+        yield return new WaitForSeconds(1);
         while (Time.timeScale != 0)
         {
             int itemIndex = Random.Range(0, items.Length);
@@ -86,7 +86,7 @@ public class GameController : MonoBehaviour
     {
         gameOver = true;
         Time.timeScale = 0;
-        int aktuellerScore = score.GetComponent<Scoreboard>().getScore();
+        int aktuellerScore = GetComponent<ScoreController>().GetScore();
         if (aktuellerScore > PlayerPrefs.GetInt("highscore"))
         {
             neuerHighscore.SetActive(true);
