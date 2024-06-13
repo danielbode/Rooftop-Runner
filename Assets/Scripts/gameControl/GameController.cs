@@ -16,6 +16,7 @@ public class GameController : MonoBehaviour
 
     private int counterBossmonster;
     private Animator playerAnimator;
+    private ScoreController scoreController;
 
     private bool gameOver;
 
@@ -24,6 +25,8 @@ public class GameController : MonoBehaviour
     {
         playerAnimator = player.GetComponent<Animator>();
         playerAnimator.SetBool("gameOn", true);
+
+        scoreController = GetComponent<ScoreController>();
 
         gameOverPanel.SetActive(false);
         neuerHighscore.SetActive(false);
@@ -86,13 +89,6 @@ public class GameController : MonoBehaviour
     {
         gameOver = true;
         Time.timeScale = 0;
-        int aktuellerScore = GetComponent<ScoreController>().GetScore();
-        if (aktuellerScore > PlayerPrefs.GetInt("highscore"))
-        {
-            neuerHighscore.SetActive(true);
-        }
-        Highscore.NeuerScore(aktuellerScore);
-        gameOverPanel.SetActive(true);
-        gameOverPanel.GetComponent<GameOverPanel>().aktualisieren();
+        scoreController.UpdateScoreAfterGameOver();
     }
 }

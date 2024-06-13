@@ -285,9 +285,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1733883456}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: startbildschirm
+      - m_Target: {fileID: 1931116715}
+        m_TargetAssemblyTypeName: ButtonController, Assembly-CSharp
+        m_MethodName: Menu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -547,9 +547,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1733883452}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: restarten
+      - m_Target: {fileID: 1931116715}
+        m_TargetAssemblyTypeName: ButtonController, Assembly-CSharp
+        m_MethodName: Restart
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -713,7 +713,6 @@ GameObject:
   - component: {fileID: 900830585}
   - component: {fileID: 900830588}
   - component: {fileID: 900830587}
-  - component: {fileID: 900830586}
   m_Layer: 5
   m_Name: GameOverPanel
   m_TagString: Untagged
@@ -748,20 +747,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &900830586
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 900830584}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 93cdeba580aa7774d81b3d2a52e03f85, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  highscoreAnzeige: {fileID: 864941882}
-  scoreAnzeige: {fileID: 1029318151}
 --- !u!114 &900830587
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -962,9 +947,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1733883454}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: pause
+      - m_Target: {fileID: 1931116715}
+        m_TargetAssemblyTypeName: ButtonController, Assembly-CSharp
+        m_MethodName: Pause
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1073,7 +1058,7 @@ GameObject:
   - component: {fileID: 1199519000}
   - component: {fileID: 1199518999}
   m_Layer: 5
-  m_Name: NewHighscore
+  m_Name: NewHighscoreBadge
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1900,89 +1885,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1706428537}
   m_CullTransparentMesh: 1
---- !u!1 &1733883451
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1733883453}
-  - component: {fileID: 1733883454}
-  - component: {fileID: 1733883452}
-  - component: {fileID: 1733883455}
-  - component: {fileID: 1733883456}
-  m_Layer: 0
-  m_Name: ButtonControl
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1733883452
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1733883451}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c4331aeda81d1ea4fa13cab296c2a9d3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!4 &1733883453
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1733883451}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.02624434, y: 0, z: 0}
-  m_LocalScale: {x: 0.036331225, y: 0.05924005, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1931116710}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1733883454
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1733883451}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 66e00cfc4fc2a054fb754fb14954e1b9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1733883455
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1733883451}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 79276b1559067584e99f4b0406d3e090, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1733883456
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1733883451}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 237da15c2e6528e4382ca003053f12f0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1839773728 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 137602, guid: 4da666dc4edcee941aaaca536f8b3bec,
@@ -2150,6 +2052,7 @@ GameObject:
   - component: {fileID: 1931116713}
   - component: {fileID: 1931116714}
   - component: {fileID: 1931116711}
+  - component: {fileID: 1931116715}
   m_Layer: 0
   m_Name: GameController
   m_TagString: GameController
@@ -2196,7 +2099,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1215329511}
-  - {fileID: 1733883453}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1931116711
@@ -2241,8 +2143,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scoreText: {fileID: 1520468648}
+  gameOverScoreText: {fileID: 1029318153}
+  gameOverHighScoreText: {fileID: 864941883}
+  gameOverPannel: {fileID: 900830584}
+  newHighscoreBadge: {fileID: 1199518997}
   updatesNeededForPointRegular: 20
   updatesNeededForPointInvincible: 1
+--- !u!114 &1931116715
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1931116708}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 823670211df275d4e87dd32642c9329e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1944069559
 PrefabInstance:
   m_ObjectHideFlags: 0
