@@ -63,7 +63,7 @@ public class GameController : MonoBehaviour
 
     IEnumerator CreateItems()
     {
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(30);
         while (Time.timeScale != 0)
         {
             int itemIndex = Random.Range(0, items.Length);
