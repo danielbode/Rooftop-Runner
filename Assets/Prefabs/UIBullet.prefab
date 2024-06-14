@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 435160}
   - component: {fileID: 21213360}
-  m_Layer: 0
-  m_Name: patrone
+  m_Layer: 5
+  m_Name: UIBullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -72,7 +72,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 99
   m_Sprite: {fileID: 21300000, guid: d86ec21fb14324942a16c0c609b58e05, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

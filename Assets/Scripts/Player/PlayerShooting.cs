@@ -5,7 +5,10 @@ public class PlayerShooting : MonoBehaviour
 {
     public Transform bullet;
 
+    public GameObject bulletsDisplay;
+
     private GameController gameControl;
+    private DisplayBullets displayBullets;
 
     public float shootCooldown;
     public int maxNumberOfBullets;
@@ -24,6 +27,8 @@ public class PlayerShooting : MonoBehaviour
             Debug.Log("Cannot find 'GameController' script");
         }
 
+        displayBullets = bulletsDisplay.GetComponent<DisplayBullets>();
+
         currentNumberOfBullets = maxNumberOfBullets;
     }
 
@@ -36,10 +41,12 @@ public class PlayerShooting : MonoBehaviour
             currentNumberOfBullets--;
         }
         lastShootTime = Time.time;
+        displayBullets.UpdateBullets();
     }
 
     public void RefillBullets()
     {
         currentNumberOfBullets = maxNumberOfBullets;
+        displayBullets.UpdateBullets();
     }
 }
