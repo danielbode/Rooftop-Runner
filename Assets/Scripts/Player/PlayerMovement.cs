@@ -7,6 +7,8 @@ public class PlayerMovement : MonoBehaviour
 {
     public Rigidbody2D rb2D;
     private GameController gameControl;
+    private ScoreController scoreController;
+    private SpeedController speedController;
 
     public float jumpForce;
     public float jumpCooldown;
@@ -20,11 +22,17 @@ public class PlayerMovement : MonoBehaviour
     public Vector3 initialPlayerScale;
     public Vector3 miniPlayerScale;
 
-    private int unsterblich;
+    private bool invincible;
     private PlayerShooting schuss;
+
+    public Sprite[] spriteArray;
+    private SpriteRenderer spriteRendererBody;
+    private SpriteRenderer spriteRendererFrontFoot;
+    private SpriteRenderer spriteRendererBackFoot;
 
     void Start()
     {
+        invincible = false;
         rb2D = GetComponent<Rigidbody2D>();
 
         GameObject gameControllerObject = GameObject.FindWithTag("GameController");
@@ -37,16 +45,22 @@ public class PlayerMovement : MonoBehaviour
             Debug.Log("Cannot find 'GameController' script");
         }
 
+        scoreController = gameControllerObject.GetComponent<ScoreController>();
+        speedController = gameControllerObject.GetComponent<SpeedController>();
         schuss = GetComponent<PlayerShooting>();
+
+        spriteRendererBody = transform.GetChild(0).GetComponent<SpriteRenderer>();
+        spriteRendererFrontFoot = transform.GetChild(1).GetComponent<SpriteRenderer>();
+        spriteRendererBackFoot = transform.GetChild(2).GetComponent<SpriteRenderer>();
     }
 
 
     void OnTriggerEnter2D(Collider2D other)
     {
 
-        if (other.tag == "unsterblich")
+        if (other.CompareTag("unsterblich"))
         {
-            unsterblichMode();
+            StartInvincibleMode();
             Destroy(other.gameObject);
         }
 
@@ -73,27 +87,14 @@ public class PlayerMovement : MonoBehaviour
         }
         else if (otherCollider.CompareTag("Body"))
         {
-            gameControl.Gameover();
-        }
-    }
-
-    void Update()
-    {
-        if (unsterblich > 0)
-        {
-            unsterblich++;
-        }
-
-        if (unsterblich == 300)
-        {
-            unsterblichModeEnde();
-            //unsterblich = 0;
-        }
-
-        if (unsterblich > 350)
-        {
-            unsterblich = 0;
-            //GetComponent<PolygonCollider2D> ().enabled = true;
+            if (invincible)
+            {
+                Destroy(otherGameObject);
+            }
+            else
+            {
+                gameControl.Gameover();
+            }
         }
     }
 
@@ -131,33 +132,30 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    public void unsterblichMode()
+    public void StartInvincibleMode()
     {
-        unsterblich = 1;
-        rb2D.velocity = new Vector2(0, jumpForce);
-        transform.position = new Vector3(-6.5f, 1, 0);
+        invincible = true;
 
-        rb2D.isKinematic = true;
-        gameControl.gameObject.GetComponent<SpeedController>().extraGeschw();
-        //rb2D.constraints = RigidbodyConstraints2D.FreezeAll;
-        //GetComponent<PolygonCollider2D> ().enabled = false;
+        scoreController.StartInvincibleMode();
+        speedController.StartInvincibleMode();
+
+        spriteRendererBody.sprite = spriteArray[3];
+        spriteRendererFrontFoot.sprite = spriteArray[4];
+        spriteRendererBackFoot.sprite = spriteArray[5];
+        
+        StartCoroutine(DoAfterDelay(5, StopInvincibleMode));
     }
 
-    public void unsterblichModeEnde()
+    public void StopInvincibleMode()
     {
-        if (unsterblich == 300)
-        {
-            rb2D.isKinematic = false;
-            gameControl.gameObject.GetComponent<SpeedController>().extraGeschwEnde();
-            //transform.position = new Vector3 (-6.5f, -3, 0);
-            /*rb2D.constraints = RigidbodyConstraints2D.None;
+        spriteRendererBody.sprite = spriteArray[0];
+        spriteRendererFrontFoot.sprite = spriteArray[1];
+        spriteRendererBackFoot.sprite = spriteArray[2];
 
-			rb2D.constraints = RigidbodyConstraints2D.FreezeRotation;
-			rb2D.constraints = RigidbodyConstraints2D.FreezePositionX;
-			*/
-        }
+        scoreController.StopInvincibleMode();
+        speedController.StopInvincibleMode();
 
-
+        invincible = false;
     }
 
     IEnumerator DoAfterDelay(float delaySeconds, Action thingToDo)

@@ -11,21 +11,19 @@ public class ScoreController : MonoBehaviour
     public int updatesNeededForPointRegular;
     public int updatesNeededForPointInvincible;
 
-    private GameObject gameControllerGameObject;
-    private SpeedController speedController;
+    private bool playerInvincible;
     private int score;
     private int numberOfUpdates;
 
     private void Start()
     {
-        gameControllerGameObject = GameObject.FindWithTag("GameController");
-        speedController = gameControllerGameObject.GetComponent<SpeedController>();
+        playerInvincible = false;
     }
 
     private void FixedUpdate()
     {
         numberOfUpdates++;
-        if (numberOfUpdates > (speedController.getUnsterblich() ? updatesNeededForPointInvincible : updatesNeededForPointRegular))
+        if (numberOfUpdates > (playerInvincible ? updatesNeededForPointInvincible : updatesNeededForPointRegular))
         {
             score++;
             numberOfUpdates = 0;
@@ -36,6 +34,16 @@ public class ScoreController : MonoBehaviour
     public int GetScore()
     {
         return score;
+    }
+
+    public void StartInvincibleMode()
+    {
+        playerInvincible = true;
+    }
+
+    public void StopInvincibleMode()
+    {
+        playerInvincible = false;
     }
 
     public void UpdateScoreAfterGameOver()
@@ -53,6 +61,5 @@ public class ScoreController : MonoBehaviour
             gameOverHighScoreText.text = currentHighscore.ToString();
         }
         gameOverPannel.SetActive(true);
-
     }
 }

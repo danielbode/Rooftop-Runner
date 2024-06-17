@@ -5,13 +5,11 @@ public class SpeedController : MonoBehaviour
 
     public float Acceleration;
     private int i;
-    private bool unsterblich;
 
     // Use this for initialization
     void Start()
     {
         Acceleration = 1;
-        unsterblich = false;
     }
 
     // Update is called once per frame
@@ -24,24 +22,15 @@ public class SpeedController : MonoBehaviour
             Acceleration += 0.05f;
             i = 0;
         }
-
     }
 
-    public void extraGeschw()
+    public void StartInvincibleMode()
     {
-        unsterblich = true;
         Acceleration += 3;
     }
 
-    public void extraGeschwEnde()
+    public void StopInvincibleMode()
     {
-        unsterblich = false;
         Acceleration -= 3;
     }
-
-    public bool getUnsterblich()
-    {
-        return unsterblich;
-    }
-
 }

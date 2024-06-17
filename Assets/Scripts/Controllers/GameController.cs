@@ -72,6 +72,7 @@ public class GameController : MonoBehaviour
             yield return new WaitForSeconds(additionalTime + 30);
         }
     }
+
     public void TogglePause()
     {
         if (gameOver) return;
