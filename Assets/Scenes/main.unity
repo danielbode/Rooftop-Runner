@@ -1942,6 +1942,19 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 2035284921}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1839773736
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1839773728}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16953faee00926749a88102096315ee6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minSwipeDistance: 40
 --- !u!1 &1888938154
 GameObject:
   m_ObjectHideFlags: 0
@@ -2357,10 +2370,29 @@ PrefabInstance:
       propertyPath: bulletsDisplay
       value: 
       objectReference: {fileID: 827034894}
+    - target: {fileID: 552997752898099806, guid: 4da666dc4edcee941aaaca536f8b3bec,
+        type: 3}
+      propertyPath: m_ActionEvents.Array.data[0].m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 552997752898099806, guid: 4da666dc4edcee941aaaca536f8b3bec,
+        type: 3}
+      propertyPath: m_ActionEvents.Array.data[1].m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 552997752898099806, guid: 4da666dc4edcee941aaaca536f8b3bec,
+        type: 3}
+      propertyPath: m_ActionEvents.Array.data[2].m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 137602, guid: 4da666dc4edcee941aaaca536f8b3bec,
+        type: 3}
+      insertIndex: 3
+      addedObject: {fileID: 1839773736}
   m_SourcePrefab: {fileID: 100100000, guid: 4da666dc4edcee941aaaca536f8b3bec, type: 3}
 --- !u!1 &2100827810
 GameObject:

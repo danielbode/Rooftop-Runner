@@ -97,7 +97,7 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    public void OnJump(CallbackContext callbackContext)
+    public void OnJump()
     {
 
         if (Time.time - lastJumpTime < jumpCooldown) return;
@@ -114,7 +114,7 @@ public class PlayerMovement : MonoBehaviour
         lastJumpTime = Time.time;
     }
 
-    public void OnDuck(CallbackContext callbackContext)
+    public void OnDuck()
     {
         if (Time.timeScale != 0)
         {

@@ -32,7 +32,7 @@ public class PlayerShooting : MonoBehaviour
         currentNumberOfBullets = maxNumberOfBullets;
     }
 
-    public void OnShoot(CallbackContext callbackContext)
+    public void OnShoot()
     {
         if (Time.time - lastShootTime < shootCooldown) return;
         if (Time.timeScale != 0 && currentNumberOfBullets > 0)
