@@ -23,7 +23,7 @@ public class PlayerMovement : MonoBehaviour
     public Vector3 miniPlayerScale;
 
     private bool invincible;
-    private PlayerShooting schuss;
+    private PlayerShooting playerShooting;
 
     public Sprite[] spriteArray;
     private SpriteRenderer spriteRendererBody;
@@ -47,7 +47,7 @@ public class PlayerMovement : MonoBehaviour
 
         scoreController = gameControllerObject.GetComponent<ScoreController>();
         speedController = gameControllerObject.GetComponent<SpeedController>();
-        schuss = GetComponent<PlayerShooting>();
+        playerShooting = GetComponent<PlayerShooting>();
 
         spriteRendererBody = transform.GetChild(0).GetComponent<SpriteRenderer>();
         spriteRendererFrontFoot = transform.GetChild(1).GetComponent<SpriteRenderer>();
@@ -64,11 +64,10 @@ public class PlayerMovement : MonoBehaviour
             Destroy(other.gameObject);
         }
 
-        if (other.tag == "patronen")
+        if (other.CompareTag("patronen"))
         {
-            schuss.RefillBullets();
+            playerShooting.RefillBullets();
             Destroy(other.gameObject);
-
         }
     }
 
