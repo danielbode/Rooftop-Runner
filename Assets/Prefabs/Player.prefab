@@ -10,10 +10,11 @@ GameObject:
   m_Component:
   - component: {fileID: 437602}
   - component: {fileID: 5037600}
-  - component: {fileID: 11437602}
-  - component: {fileID: 11497980}
   - component: {fileID: 6005300}
   - component: {fileID: 5562662760440027027}
+  - component: {fileID: 11437602}
+  - component: {fileID: 11497980}
+  - component: {fileID: 1330663092602273836}
   - component: {fileID: 552997752898099806}
   m_Layer: 0
   m_Name: Player
@@ -65,43 +66,8 @@ Rigidbody2D:
     m_Bits: 0
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 5
---- !u!114 &11437602
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 137602}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5a9b625a4f3cf444fb686288a8c78e06, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rb2D: {fileID: 5037600}
-  jumpForce: 11.5
-  jumpCooldown: 0.2
-  duckForce: -20
-  duckDuration: 0.5
-  initialPlayerScale: {x: 0.25, y: 0.25, z: 1}
-  miniPlayerScale: {x: 0.15, y: 0.15, z: 1}
---- !u!114 &11497980
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 137602}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 63356cbe50127344bb0be4e64a12fde7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bullet: {fileID: 470478, guid: 1efb01fc3bad65e45bd07621852edda3, type: 3}
-  shootCooldown: 0.2
-  maxNumberOfBullets: 10
-  currentNumberOfBullets: 0
 --- !u!60 &6005300
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -302,6 +268,64 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &11437602
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 137602}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a9b625a4f3cf444fb686288a8c78e06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spriteRendererBody: {fileID: 7042927261911749331}
+  spriteRendererFrontFoot: {fileID: 8304069409078252867}
+  spriteRendererBackFoot: {fileID: 5507461458457426792}
+  spriteArray:
+  - {fileID: 21300000, guid: fe37e1f5b6d1c4748a3eaf83bff43ffc, type: 3}
+  - {fileID: 21300004, guid: fe37e1f5b6d1c4748a3eaf83bff43ffc, type: 3}
+  - {fileID: 21300002, guid: fe37e1f5b6d1c4748a3eaf83bff43ffc, type: 3}
+  - {fileID: 672285019, guid: 006e1fc6d154e3842b6e029b699c2cff, type: 3}
+  - {fileID: -896161534, guid: 006e1fc6d154e3842b6e029b699c2cff, type: 3}
+  - {fileID: 1813909423, guid: 006e1fc6d154e3842b6e029b699c2cff, type: 3}
+  jumpForce: 11.5
+  jumpCooldown: 0.2
+  duckForce: -20
+  duckDuration: 0.5
+  initialPlayerScale: {x: 0.25, y: 0.25, z: 1}
+  miniPlayerScale: {x: 0.15, y: 0.15, z: 1}
+--- !u!114 &11497980
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 137602}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63356cbe50127344bb0be4e64a12fde7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  displayBullets: {fileID: 0}
+  bullet: {fileID: 184078, guid: 1efb01fc3bad65e45bd07621852edda3, type: 3}
+  shootCooldown: 0.2
+  maxNumberOfBullets: 10
+  currentNumberOfBullets: 0
+--- !u!114 &1330663092602273836
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 137602}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16953faee00926749a88102096315ee6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minSwipeDistance: 40
 --- !u!114 &552997752898099806
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -333,7 +357,7 @@ MonoBehaviour:
       - m_Target: {fileID: 11437602}
         m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
         m_MethodName: OnJump
-        m_Mode: 0
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -349,7 +373,7 @@ MonoBehaviour:
       - m_Target: {fileID: 11437602}
         m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
         m_MethodName: OnDuck
-        m_Mode: 0
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -365,7 +389,7 @@ MonoBehaviour:
       - m_Target: {fileID: 11497980}
         m_TargetAssemblyTypeName: PlayerShooting, Assembly-CSharp
         m_MethodName: OnShoot
-        m_Mode: 0
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine

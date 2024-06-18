@@ -1,80 +1,83 @@
 ﻿using UnityEngine;
 
-public class SwipeInputController : MonoBehaviour {
+public class SwipeInputController : MonoBehaviour
+{
+    public int minSwipeDistance;
 
-	public int minSwipeDistance;
+    private PlayerMovement playerMovement;
+    private PlayerShooting playerShooting;
+    private bool newTouch;
+    private bool swiped;
+    private Vector2 touchStart;
 
-	private Vector2 touchStart;
-	private bool newTouch;
-	private bool swiped;
-
-	private PlayerMovement playerMovement;
-	private PlayerShooting playerShooting;
-
-	// Use this for initialization
-	void Start () {
-		playerMovement = GetComponent<PlayerMovement>();
-		playerShooting = GetComponent<PlayerShooting>();
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		if(Input.touchCount == 0) return;
-		
-		var touch = Input.GetTouch(0);
-
-		switch(touch.phase)
-		{
-		case TouchPhase.Began:
-			touchStart = touch.position;
-			newTouch = true;
-			swiped = false;
-			break;
-			
-		case TouchPhase.Moved:
-			EvaluateSwipe(touch.position);
-			break;
-			
-		case TouchPhase.Ended:
-			newTouch = false;
-			if (!swiped) { Touch(); }
-			break;
-
-		case TouchPhase.Canceled:
-			newTouch = false;
-			if (!swiped) { Touch(); }
-			break;
-		}
-	}
-
-	private void EvaluateSwipe(Vector2 touchNow)
-	{
-		if(!newTouch) return;
-				
-		var swipeY = touchNow.y - touchStart.y;
-
-		if (Mathf.Abs (swipeY) >= minSwipeDistance) 
-		{
-			if (swipeY > 0) { SwipeUp(); }
-			if (swipeY < 0) { SwipeDown(); }
-
-			newTouch = false;
-			swiped = true;
-		}
-	}
-
-	private void SwipeUp()
+    private void Start()
     {
-		playerMovement.OnJump();
+        playerMovement = GetComponent<PlayerMovement>();
+        if (playerMovement == null)
+        {
+            Debug.LogError("PlayerMovement not found.");
+        }
+        playerShooting = GetComponent<PlayerShooting>();
+        if (playerShooting == null)
+        {
+            Debug.LogError("PlayerShooting not found.");
+        }
     }
 
-	private void SwipeDown()
+    private void Update()
     {
-		playerMovement.OnDuck();
+        if (Input.touchCount == 0) return;
+
+        Touch touch = Input.GetTouch(0);
+
+        switch (touch.phase)
+        {
+            case TouchPhase.Began:
+                newTouch = true;
+                swiped = false;
+                touchStart = touch.position;
+                break;
+            case TouchPhase.Moved:
+                EvaluateSwipe(touch.position);
+                break;
+            case TouchPhase.Ended:
+                newTouch = false;
+                if (!swiped) { Touch(); }
+                break;
+            case TouchPhase.Canceled:
+                newTouch = false;
+                if (!swiped) { Touch(); }
+                break;
+        }
     }
 
-	private void Touch()
+    private void EvaluateSwipe(Vector2 touchCurrent)
     {
-		playerShooting.OnShoot();
+        if (!newTouch) return;
+
+        float swipeY = touchCurrent.y - touchStart.y;
+
+        if (Mathf.Abs(swipeY) >= minSwipeDistance)
+        {
+            if (swipeY > 0) { SwipeUp(); }
+            if (swipeY < 0) { SwipeDown(); }
+            newTouch = false;
+            swiped = true;
+        }
+    }
+
+    private void SwipeUp()
+    {
+        playerMovement.OnJump();
+    }
+
+    private void SwipeDown()
+    {
+        playerMovement.OnDuck();
+    }
+
+    private void Touch()
+    {
+        playerShooting.OnShoot();
     }
 }

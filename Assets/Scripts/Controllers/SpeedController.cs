@@ -2,35 +2,40 @@
 
 public class SpeedController : MonoBehaviour
 {
+    public float accelerationIncrease;
+    public float accelerationIncreaseDuringInvincible;
+    public int updatesPerAccelerationIncrease;
 
-    public float Acceleration;
-    private int i;
+    private float currentAcceleration;
+    private int numberOfUpdates;
 
-    // Use this for initialization
-    void Start()
+    private void Start()
     {
-        Acceleration = 1;
+        currentAcceleration = 1;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void FixedUpdate()
     {
-        if (Time.timeScale == 0) return;
-        i++;
-        if (i == 500)
+        numberOfUpdates++;
+        if (numberOfUpdates == updatesPerAccelerationIncrease)
         {
-            Acceleration += 0.05f;
-            i = 0;
+            currentAcceleration += accelerationIncrease;
+            numberOfUpdates = 0;
         }
     }
 
     public void StartInvincibleMode()
     {
-        Acceleration += 3;
+        currentAcceleration += accelerationIncreaseDuringInvincible;
     }
 
     public void StopInvincibleMode()
     {
-        Acceleration -= 3;
+        currentAcceleration -= accelerationIncreaseDuringInvincible;
+    }
+
+    public float GetCurrentAcceleration()
+    {
+        return currentAcceleration;
     }
 }

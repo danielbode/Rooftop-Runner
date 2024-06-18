@@ -40,7 +40,7 @@ public class ObjectMovement : MonoBehaviour
 
     void Move()
     {
-        float accelerationFactor = affectedByGameAcceleration ? speedController.Acceleration : 1;
+        float accelerationFactor = affectedByGameAcceleration ? speedController.GetCurrentAcceleration() : 1;
         rb2D.MovePosition(rb2D.position + accelerationFactor * Time.fixedDeltaTime * speed);
     }
 }

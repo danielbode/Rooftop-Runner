@@ -3,51 +3,58 @@ using System.Collections;
 
 public class GameController : MonoBehaviour
 {
-    public GameObject player;
-
     public GameObject[] obstacles;
     public GameObject[] items;
     public GameObject bossMonster;
+    public float staticTimeBetweenObstacles;
+    public float staticTimeBetweenItems;
 
-    public GameObject gameOverPanel;
-    public GameObject neuerHighscore;
-
-    public GameObject score;
-
-    private int counterBossmonster;
     private Animator playerAnimator;
     private ScoreController scoreController;
-
+    private int counterBossmonster;
     private bool gameOver;
 
-    // Use this for initialization
-    void Start()
+    private void Start()
     {
-        playerAnimator = player.GetComponent<Animator>();
-        playerAnimator.SetBool("gameOn", true);
-
+        GameObject playerGameObject = GameObject.FindWithTag("Player");
+        if (playerGameObject == null)
+        {
+            Debug.LogError("Game Object with tag \"Player\" not found.");
+        }
+        else
+        {
+            playerAnimator = playerGameObject.GetComponent<Animator>();
+            if (playerAnimator == null)
+            {
+                Debug.LogError("PlayerAnimator not found.");
+            }
+            else
+            {
+                playerAnimator.SetBool("gameOn", true);
+            }
+        }
         scoreController = GetComponent<ScoreController>();
-
-        gameOverPanel.SetActive(false);
-        neuerHighscore.SetActive(false);
+        if (scoreController == null)
+        {
+            Debug.LogError("ScoreController not found.");
+        }
 
         Time.timeScale = 1;
-
         counterBossmonster = 0;
 
         StartCoroutine(CreateObstacles());
         StartCoroutine(CreateItems());
     }
 
-    IEnumerator CreateObstacles()
+    private IEnumerator CreateObstacles()
     {
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(staticTimeBetweenObstacles);
         while (Time.timeScale != 0)
         {
             if (counterBossmonster == 10)
             {
                 Instantiate(bossMonster);
-                yield return new WaitForSeconds(1);
+                yield return new WaitForSeconds(staticTimeBetweenObstacles);
                 counterBossmonster = 0;
             }
             else
@@ -56,20 +63,20 @@ public class GameController : MonoBehaviour
                 int obstacleIndex = Random.Range(0, obstacles.Length);
                 Instantiate(obstacles[obstacleIndex], obstacles[obstacleIndex].transform.position, Quaternion.identity);
                 float additionalTime = Random.value * 2; //wait up to 2 additional seconds to vary distance between obstacles
-                yield return new WaitForSeconds(additionalTime + 1);
+                yield return new WaitForSeconds(additionalTime + staticTimeBetweenObstacles);
             }
         }
     }
 
-    IEnumerator CreateItems()
+    private IEnumerator CreateItems()
     {
-        yield return new WaitForSeconds(30);
+        yield return new WaitForSeconds(staticTimeBetweenItems);
         while (Time.timeScale != 0)
         {
             int itemIndex = Random.Range(0, items.Length);
             Instantiate(items[itemIndex], items[itemIndex].transform.position, Quaternion.identity);
             float additionalTime = Random.value * 5;
-            yield return new WaitForSeconds(additionalTime + 30);
+            yield return new WaitForSeconds(additionalTime + staticTimeBetweenItems);
         }
     }
 

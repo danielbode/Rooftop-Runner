@@ -1,33 +1,31 @@
 ﻿using UnityEngine;
-using static UnityEngine.InputSystem.InputAction;
 
 public class PlayerShooting : MonoBehaviour
 {
-    public Transform bullet;
-
-    public GameObject bulletsDisplay;
-
-    private GameController gameControl;
-    private DisplayBullets displayBullets;
-
+    public DisplayBullets displayBullets;
+    public GameObject bullet;
     public float shootCooldown;
     public int maxNumberOfBullets;
     public int currentNumberOfBullets;
+
+    private GameController gameController;
     private float lastShootTime;
 
-    void Start()
+    private void Start()
     {
-        GameObject gameControllerObject = GameObject.FindWithTag("GameController");
-        if (gameControllerObject != null)
+        GameObject gameControllerGameObject = GameObject.FindWithTag("GameController");
+        if (gameControllerGameObject == null)
         {
-            gameControl = gameControllerObject.GetComponent<GameController>();
+            Debug.LogError("Game Object with tag \"GameController\" not found.");
         }
-        if (gameControl == null)
+        else
         {
-            Debug.Log("Cannot find 'GameController' script");
+            gameController = gameControllerGameObject.GetComponent<GameController>();
+            if (gameController == null)
+            {
+                Debug.LogError("GameController not found.");
+            }
         }
-
-        displayBullets = bulletsDisplay.GetComponent<DisplayBullets>();
 
         currentNumberOfBullets = maxNumberOfBullets;
     }
@@ -37,7 +35,7 @@ public class PlayerShooting : MonoBehaviour
         if (Time.time - lastShootTime < shootCooldown) return;
         if (Time.timeScale != 0 && currentNumberOfBullets > 0)
         {
-            Instantiate(bullet, new Vector2(this.transform.position.x + 1, this.transform.position.y), Quaternion.identity);
+            Instantiate(bullet, new Vector2(transform.position.x + 1, transform.position.y), Quaternion.identity);
             currentNumberOfBullets--;
         }
         lastShootTime = Time.time;

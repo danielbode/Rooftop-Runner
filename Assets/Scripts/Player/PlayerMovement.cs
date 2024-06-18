@@ -1,69 +1,77 @@
 ﻿using UnityEngine;
-using System.Collections;
-using static UnityEngine.InputSystem.InputAction;
 using System;
+using System.Collections;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public Rigidbody2D rb2D;
-    private GameController gameControl;
-    private ScoreController scoreController;
-    private SpeedController speedController;
-
+    public SpriteRenderer spriteRendererBody;
+    public SpriteRenderer spriteRendererFrontFoot;
+    public SpriteRenderer spriteRendererBackFoot;
+    public Sprite[] spriteArray;
     public float jumpForce;
     public float jumpCooldown;
-    private int jumpCount;
-    private float lastJumpTime;
-
     public float duckForce;
     public float duckDuration;
-    private bool isDucked;
-
     public Vector3 initialPlayerScale;
     public Vector3 miniPlayerScale;
 
-    private bool invincible;
+    private GameController gameController;
+    private ScoreController scoreController;
+    private SpeedController speedController;
     private PlayerShooting playerShooting;
+    private Rigidbody2D rigidBody2D;
+    private int jumpCount;
+    private float lastJumpTime;
+    private bool isDucked;
+    private bool invincible;
 
-    public Sprite[] spriteArray;
-    private SpriteRenderer spriteRendererBody;
-    private SpriteRenderer spriteRendererFrontFoot;
-    private SpriteRenderer spriteRendererBackFoot;
-
-    void Start()
+    private void Start()
     {
-        invincible = false;
-        rb2D = GetComponent<Rigidbody2D>();
-
-        GameObject gameControllerObject = GameObject.FindWithTag("GameController");
-        if (gameControllerObject != null)
+        GameObject gameControllerGameObject = GameObject.FindWithTag("GameController");
+        if (gameControllerGameObject == null)
         {
-            gameControl = gameControllerObject.GetComponent<GameController>();
+            Debug.LogError("Game Object with tag \"GameController\" not found.");
         }
-        if (gameControl == null)
+        else
         {
-            Debug.Log("Cannot find 'GameController' script");
+            gameController = gameControllerGameObject.GetComponent<GameController>();
+            if (gameController == null)
+            {
+                Debug.Log("GameController not found.");
+            }
+            scoreController = gameControllerGameObject.GetComponent<ScoreController>();
+            if (scoreController == null)
+            {
+                Debug.Log("ScoreController not found.");
+            }
+            speedController = gameControllerGameObject.GetComponent<SpeedController>();
+            if (speedController == null)
+            {
+                Debug.Log("SpeedController not found.");
+            }
         }
-
-        scoreController = gameControllerObject.GetComponent<ScoreController>();
-        speedController = gameControllerObject.GetComponent<SpeedController>();
         playerShooting = GetComponent<PlayerShooting>();
+        if (playerShooting == null)
+        {
+            Debug.Log("PlayerShooting not found.");
+        }
+        rigidBody2D = GetComponent<Rigidbody2D>();
+        if (rigidBody2D == null)
+        {
+            Debug.Log("Rigidbody2D not found.");
+        }
 
-        spriteRendererBody = transform.GetChild(0).GetComponent<SpriteRenderer>();
-        spriteRendererFrontFoot = transform.GetChild(1).GetComponent<SpriteRenderer>();
-        spriteRendererBackFoot = transform.GetChild(2).GetComponent<SpriteRenderer>();
+        invincible = false;
     }
 
 
-    void OnTriggerEnter2D(Collider2D other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
-
         if (other.CompareTag("unsterblich"))
         {
             StartInvincibleMode();
             Destroy(other.gameObject);
         }
-
         if (other.CompareTag("patronen"))
         {
             playerShooting.RefillBullets();
@@ -71,7 +79,7 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    void OnCollisionEnter2D(Collision2D other)
+    private void OnCollisionEnter2D(Collision2D other)
     {
         GameObject otherGameObject = other.gameObject;
         Collider2D otherCollider = other.GetContact(0).collider;
@@ -92,23 +100,28 @@ public class PlayerMovement : MonoBehaviour
             }
             else
             {
-                gameControl.Gameover();
+                gameController.Gameover();
             }
         }
     }
 
+    private IEnumerator DoAfterDelay(float delaySeconds, Action thingToDo)
+    {
+        yield return new WaitForSeconds(delaySeconds);
+        thingToDo();
+    }
+
     public void OnJump()
     {
-
         if (Time.time - lastJumpTime < jumpCooldown) return;
         if (Time.timeScale != 0 && jumpCount < 2)
         {
             if (isDucked)
             {
                 isDucked = false;
-                this.transform.localScale = initialPlayerScale;
+                transform.localScale = initialPlayerScale;
             }
-            rb2D.velocity = new Vector2(0, jumpForce);
+            rigidBody2D.velocity = new Vector2(0, jumpForce);
             jumpCount++;
         }
         lastJumpTime = Time.time;
@@ -119,11 +132,11 @@ public class PlayerMovement : MonoBehaviour
         if (Time.timeScale != 0)
         {
             isDucked = true;
-            this.transform.localScale = miniPlayerScale;
-            rb2D.velocity = new Vector2(0, duckForce);
+            transform.localScale = miniPlayerScale;
+            rigidBody2D.velocity = new Vector2(0, duckForce);
             StartCoroutine(DoAfterDelay(duckDuration, () =>
             {
-                if (!this.transform.localScale.Equals(initialPlayerScale))
+                if (!transform.localScale.Equals(initialPlayerScale))
                 {
                     transform.localScale = initialPlayerScale;
                 }
@@ -141,7 +154,7 @@ public class PlayerMovement : MonoBehaviour
         spriteRendererBody.sprite = spriteArray[3];
         spriteRendererFrontFoot.sprite = spriteArray[4];
         spriteRendererBackFoot.sprite = spriteArray[5];
-        
+
         StartCoroutine(DoAfterDelay(5, StopInvincibleMode));
     }
 
@@ -155,11 +168,5 @@ public class PlayerMovement : MonoBehaviour
         speedController.StopInvincibleMode();
 
         invincible = false;
-    }
-
-    IEnumerator DoAfterDelay(float delaySeconds, Action thingToDo)
-    {
-        yield return new WaitForSeconds(delaySeconds);
-        thingToDo();
     }
 }

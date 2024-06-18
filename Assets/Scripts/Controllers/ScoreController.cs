@@ -31,11 +31,6 @@ public class ScoreController : MonoBehaviour
         }
     }
 
-    public int GetScore()
-    {
-        return score;
-    }
-
     public void StartInvincibleMode()
     {
         playerInvincible = true;

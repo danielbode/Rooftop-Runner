@@ -1,18 +1,25 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class ButtonController : MonoBehaviour
 {
-    private GameObject gameControllerGameObject;
     private GameController gameController;
 
-    // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
-        gameControllerGameObject = GameObject.FindWithTag("GameController");
-        gameController = gameControllerGameObject.GetComponent<GameController>();
+        GameObject gameControllerGameObject = GameObject.FindWithTag("GameController");
+        if (gameControllerGameObject == null)
+        {
+            Debug.LogError("Game Object with tag \"GameController\" not found.");
+        }
+        else
+        {
+            gameController = gameControllerGameObject.GetComponent<GameController>();
+            if (gameController == null)
+            {
+                Debug.LogError("GameController not found.");
+            }
+        }
     }
 
     public void Pause()
