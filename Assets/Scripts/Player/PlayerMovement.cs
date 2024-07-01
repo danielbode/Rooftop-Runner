@@ -67,12 +67,12 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("unsterblich"))
+        if (other.CompareTag("InvincibleItem"))
         {
             StartInvincibleMode();
             Destroy(other.gameObject);
         }
-        if (other.CompareTag("patronen"))
+        if (other.CompareTag("BulletsItem"))
         {
             playerShooting.RefillBullets();
             Destroy(other.gameObject);
@@ -84,7 +84,7 @@ public class PlayerMovement : MonoBehaviour
         GameObject otherGameObject = other.gameObject;
         Collider2D otherCollider = other.GetContact(0).collider;
 
-        if (otherGameObject.CompareTag("roof") || otherCollider.CompareTag("roof"))
+        if (otherGameObject.CompareTag("Roof") || otherCollider.CompareTag("Roof"))
         {
             jumpCount = 0;
         }

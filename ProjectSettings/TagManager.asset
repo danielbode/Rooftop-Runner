@@ -4,16 +4,15 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - roof
-  - spielfeld
-  - monster
-  - hindernis
-  - schuss
-  - unsterblich
-  - patronen
   - Controller
   - Head
   - Body
+  - Roof
+  - GameBoard
+  - Monster
+  - Obstacle
+  - InvincibleItem
+  - BulletsItem
   layers:
   - Default
   - TransparentFX

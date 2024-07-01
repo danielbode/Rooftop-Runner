@@ -32,7 +32,7 @@ public class ObjectMovement : MonoBehaviour
     void OnTriggerExit2D(Collider2D other)
     {
         if (!destroyWhenOutOfView) return;
-        if (other.CompareTag("spielfeld"))
+        if (other.CompareTag("GameBoard"))
         {
             Destroy(gameObject);
         }

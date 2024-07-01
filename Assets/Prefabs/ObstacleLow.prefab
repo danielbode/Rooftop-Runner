@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5013140}
   m_Layer: 0
   m_Name: ObstacleLow
-  m_TagString: hindernis
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -219,7 +219,7 @@ GameObject:
   - component: {fileID: 5804738126680047131}
   m_Layer: 0
   m_Name: WalkableTop
-  m_TagString: roof
+  m_TagString: Roof
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

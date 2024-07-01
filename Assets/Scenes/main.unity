@@ -1183,7 +1183,7 @@ GameObject:
   - component: {fileID: 1215329510}
   m_Layer: 0
   m_Name: GameBoard
-  m_TagString: spielfeld
+  m_TagString: GameBoard
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1950,7 +1950,7 @@ GameObject:
   - component: {fileID: 1888938158}
   m_Layer: 0
   m_Name: Floor
-  m_TagString: roof
+  m_TagString: Roof
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
