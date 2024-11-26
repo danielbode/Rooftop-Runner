@@ -7,17 +7,20 @@ public class ButtonController : MonoBehaviour
 
     private void Start()
     {
-        GameObject gameControllerGameObject = GameObject.FindWithTag("GameController");
-        if (gameControllerGameObject == null)
+        if (!SceneManager.GetSceneByName("MainMenu").isLoaded)
         {
-            Debug.LogError("Game Object with tag \"GameController\" not found.");
-        }
-        else
-        {
-            gameController = gameControllerGameObject.GetComponent<GameController>();
-            if (gameController == null)
+            GameObject gameControllerGameObject = GameObject.FindWithTag("GameController");
+            if (gameControllerGameObject == null)
             {
-                Debug.LogError("GameController not found.");
+                Debug.LogError("Game Object with tag \"GameController\" not found.");
+            }
+            else
+            {
+                gameController = gameControllerGameObject.GetComponent<GameController>();
+                if (gameController == null)
+                {
+                    Debug.LogError("GameController not found.");
+                }
             }
         }
     }
