@@ -7,7 +7,7 @@ public class ButtonController : MonoBehaviour
 
     private void Start()
     {
-        if (!SceneManager.GetSceneByName("MainMenu").isLoaded)
+        if (SceneManager.GetSceneByName("Main").isLoaded)
         {
             GameObject gameControllerGameObject = GameObject.FindWithTag("GameController");
             if (gameControllerGameObject == null)
