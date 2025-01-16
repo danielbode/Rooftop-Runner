@@ -121,7 +121,7 @@ public class PlayerMovement : MonoBehaviour
                 isDucked = false;
                 transform.localScale = initialPlayerScale;
             }
-            rigidBody2D.velocity = new Vector2(0, jumpForce);
+            rigidBody2D.linearVelocity = new Vector2(0, jumpForce);
             jumpCount++;
         }
         lastJumpTime = Time.time;
@@ -133,7 +133,7 @@ public class PlayerMovement : MonoBehaviour
         {
             isDucked = true;
             transform.localScale = miniPlayerScale;
-            rigidBody2D.velocity = new Vector2(0, duckForce);
+            rigidBody2D.linearVelocity = new Vector2(0, duckForce);
             StartCoroutine(DoAfterDelay(duckDuration, () =>
             {
                 if (!transform.localScale.Equals(initialPlayerScale))
