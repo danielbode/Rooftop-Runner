@@ -44,4 +44,9 @@ public class ButtonController : MonoBehaviour
     {
         SceneManager.LoadSceneAsync("Highscore");
     }
+
+    public void Quit()
+    {
+        Application.Quit();
+    }
 }
