@@ -2,15 +2,15 @@
 
 public class ObjectSwap : MonoBehaviour
 {
-    public GameObject Object1;
-    public GameObject Object2;
+    public GameObject object1;
+    public GameObject object2;
 
     public float TurningPoint;
 
     void Update()
     {
-        CheckAndUpdatePosition(Object1, Object2);
-        CheckAndUpdatePosition(Object2, Object1);
+        CheckAndUpdatePosition(object1, object2);
+        CheckAndUpdatePosition(object2, object1);
     }
 
     void CheckAndUpdatePosition(GameObject obj1, GameObject obj2)
