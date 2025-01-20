@@ -1112,8 +1112,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f2974c0b31b63248876b940b37b5768, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Object1: {fileID: 591464227}
-  Object2: {fileID: 875554667}
+  object1: {fileID: 591464227}
+  object2: {fileID: 875554667}
   TurningPoint: -25.9
 --- !u!1 &1199518997
 GameObject:
@@ -2049,8 +2049,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f2974c0b31b63248876b940b37b5768, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Object1: {fileID: 1288229522}
-  Object2: {fileID: 645232551}
+  object1: {fileID: 1288229522}
+  object2: {fileID: 645232551}
   TurningPoint: -25
 --- !u!1 &1931116708
 GameObject:
