@@ -1,79 +1,84 @@
 # Rooftop-Runner
 
 ## About the Project
-Rooftop Runnner is a 2D jump 'n' run game. You will run on the top of a building, have to avoid obstacles by jumping over them and fighting enemies there. Try to go as far as possible and beat the highscore.
+Rooftop Runner is a 2D jump-and-run game where you navigate across the rooftops of buildings. Your goal is to avoid obstacles, battle enemies, and achieve the highest possible score. 
 
 Originally created in 2016 and revised in 2025.
 
-![ScreenshotGame](images/screenshotGame.png)
-
-![ScreenshotStartScreen](images/screenshotStart.png)
+![Game Screenshot](images/screenshotGame.png)
+![Start Screen](images/screenshotStart.png)
 
 ### Built With
-The project was built using Unity 6 with C#.
+This project was built using Unity 6 and C#.
 
-<img src="images/unity6.jpeg" height="70">
+<img src="images/unity6.jpeg" alt="Unity 6" height="70">
 
-##Installation
+## Installation
 
 ### Windows
-Run .exe
+1. Download and extract the Windows version.
+2. Run `Rooftop Runner.exe`.
 
 ### Mac
-Run
+1. Download and extract the Mac version.
+2. Run `Rooftop Runner.app`.
 
 ### Linux
-Run
+1. Download and extract the Linux version.
+2. Run `Rooftop Runner.x86_64`.
 
 ### Android
-Run apk
-
-### iOS
-Run app
+1. Download and extract the Android version.
+2. Install and run `Rooftop Runner.apk`.
 
 ## How to Play
-When you run the game, you first see the start screen. There are three options. "Start", "Highscore" and "Quit".
+You automatically run along a rooftop, aiming to progress as far as possible. To succeed, avoid obstacles, defeat enemies, and manage your ammunition. 
 
-Get as many points as possible by surviving as long as possible. You have to avoid different obstacles and fight different monsters and enemies.
+### Controls
+- **Jump:** <kbd>W</kbd> / Swipe Up
+- **Duck:** <kbd>S</kbd> / Swipe Down
+- **Shoot:** <kbd>Space</kbd> / Tap Screen
 
-There are different types of enemies:
+### Obstacles and Enemies
+- **Boxes:** Jump over or shoot them to clear your path.
+- **Bricks:** These are indestructible. Use a double jump or a duck for high bricks and a regular jump for low bricks.
+- **Monsters:** Avoid them, jump on their heads to defeat them, or shoot them.
+- **Helicopters:** These shoot at you from a distance. Dodge their shots or defeat them by shooting back. If avoided, they will eventually run out of ammunition and leave.
 
-Type 1
+### Power-Ups
+- **Star:** Grants temporary invincibility and increased speed, allowing you to pass through obstacles and enemies. Beware when the effect ends.
+- **Gun:** Replenishes your ammunition.
 
-Type 2
-
-Type 3
-
-The controls are as follows:
-
-- <kbd>W</kbd>/<kbd>Swipe Up</kbd>: Jump
-- <kbd>S</kbd>/<kbd>Swipe Down</kbd>: Duck
-- <kbd>Space</kbd>/<kbd>Tap Screen</kbd>: Shoot
-
-Have fun!
+Enjoy the game and strive for a new high score!
 
 ## Development
-To continue developing install Unity 6 and open the project.
+To contribute or make modifications, follow these steps:
 
-### Export for Windows
+1. Install Unity 6.
+2. Open the project in Unity.
 
-click export
+### Scenes
+- **MainMenu:** Initial screen displayed at startup.
+- **Highscore:** Displays the current high score.
+- **Main:** The core gameplay scene.
 
-### Export for Mac
+### Key GameObjects
+- **Player:**
+  - Contains the player model and animations.
+  - Scripts:
+    - `PlayerMovement`: Handles jumping and ducking.
+    - `PlayerShooting`: Manages shooting, including bullet creation and ammunition tracking.
+    - `SwipeInputController`: Detects swipes for mobile controls.
 
-click export
+- **Background and Floor:**
+  - Use the `ObjectSwap` script to recycle and reposition elements for endless running.
 
-### Export for Linux
-
-click export
-
-### Export for Android
-
-click export
-
-### Export for iOS
-
-click export
+- **GameController:**
+  - Manages game logic and consists of:
+    - `GameController`: Handles main logic.
+    - `SpeedController`: Increases game speed as the player progresses.
+    - `ScoreController`: Tracks the score.
+    - `ButtonController`: Responds to button presses.
 
 ## License
-Distributed under the GPL-3.0 license. See <code>LICENSE</code> for more information.
+Distributed under the GPL-3.0 license. See the `LICENSE` file for details.
