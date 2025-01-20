@@ -6,6 +6,7 @@ Rooftop Runner is a 2D jump-and-run game where you navigate across the rooftops 
 Originally created in 2016 and revised in 2025.
 
 ![Game Screenshot](images/screenshotGame.png)
+
 ![Start Screen](images/screenshotStart.png)
 
 ### Built With
